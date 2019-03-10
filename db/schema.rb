@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_10_062250) do
+ActiveRecord::Schema.define(version: 2019_03_10_064636) do
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "genre"
+    t.integer "match_status"
+    t.string "match_name"
+    t.datetime "match_day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
