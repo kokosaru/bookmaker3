@@ -10,13 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_10_064636) do
+ActiveRecord::Schema.define(version: 2019_03_10_091153) do
+
+  create_table "counts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "team_id"
+    t.integer "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "matches", force: :cascade do |t|
     t.integer "genre"
     t.integer "match_status"
     t.string "match_name"
     t.datetime "match_day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.integer "match_id"
+    t.integer "team_number"
+    t.string "team_name"
+    t.string "team_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
