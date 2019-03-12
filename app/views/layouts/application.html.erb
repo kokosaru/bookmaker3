@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Bookmaker3</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,9 +10,22 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <header>
-    <% if user_signed_in? %>
-    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    <div class="head">
+    <% if user_signed_in? && current_user.admin == true %>
+      <nav class="head_navi clearfix">
+            <li class="navi-list"><%= link_to 'TOP画面へ戻る', matches_path %></li>
+            <li class="navi-list"><%= link_to '登録者 一覧', admin_matches_path %></li>
+            <!--<li class="navi-list"><%#= link_to '登録商品 一覧', admin_matches_path %></li> -->
+            <li class="navi-list"><%= link_to "新規商品登録", new_admin_match_path, data: {"turbolinks" => false} %></li>
+            <li class="navi-list"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
+     </nav>
+
+     <% elsif user_signed_in? %>
+      <nav class="head_navi clearfix">
+            <li class="navi-list"><%= link_to 'TOP画面へ戻る', matches_path %></li>
+            <li class="navi-list"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
     <% end %>
+    </div>
   </header>
   <body>
     <%= yield %>

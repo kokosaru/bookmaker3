@@ -16,3 +16,49 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+header {
+  width: 100%;
+  padding: 20px 0;
+  margin-bottom: 20px;
+  /*background-color: #ffffffe8;*/
+  background-color: skyblue;
+  border-bottom: solid 1px #777;
+}
+
+.head {
+  margin: 0 auto;
+  position: relative;
+  padding: 10px;
+}
+
+.head_navi {
+  float: left;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: table;
+  padding-right: 30px;
+}
+
+.navi-list {
+  width: 130px;
+  list-style: none;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.navi-list a {
+  color: #000000;
+  text-decoration:none;
+  font-size: 15px;
+  font-family: sans-serif;
+}
+

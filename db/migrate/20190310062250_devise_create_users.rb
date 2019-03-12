@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       t.string :user_name
       t.string :user_image_id
-      t.integer :rate
+      t.integer :rate, default: 2500
       t.boolean :admin, default: false
       t.timestamps null: false
     end

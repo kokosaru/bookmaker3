@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_03_10_091153) do
   create_table "counts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "team_id"
-    t.integer "count"
+    t.integer "count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_03_10_091153) do
     t.string "last_sign_in_ip"
     t.string "user_name"
     t.string "user_image_id"
-    t.integer "rate"
+    t.integer "rate", default: 2500
     t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
