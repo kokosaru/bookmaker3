@@ -1,0 +1,38 @@
+<div class="container">
+	<div class="row">
+		<div class="main col-md-offset-2 col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h2>商品情報 新規登録</h2></div>
+				<div class="panel-body">
+					<%= form_for ([:admin,@match]) do |f| %>
+					<p>
+						<%= f.label :スポーツジャンル %>
+						<%= f.select :genre, Match.genres.keys %>
+					</p>
+					<p>
+						<%= f.label :大会名 %>
+						<%= f.text_field :match_name,placeholder: "大会名", class: "form-control" %>
+					</p>
+					<p>
+						<%= f.label :大会日時 %>
+						<%= f.datetime_select :match_day,placeholder: "サムネイル", class: "form-control" %>
+					</p>
+					<div id="teams">
+						<%= f.fields_for :teams do |team| %>
+					<%= render 'team_fields', f: team %>
+					<% end %>
+					</div>
+					<div class="disc-add" id="links">
+						<%= link_to_add_association 'チーム追加',f, :teams %>
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="actions row product-new">
+				<%= f.submit :試合登録,class: "btn btn-primary col-md-offset-4 col-md-4" %>
+					<% end %>
+			</div>
+
+
+	</div>
+</div>

@@ -1,0 +1,9 @@
+<div class="nested-fields well well-compact">
+  <div class="form-group">
+    <%= f.label :No %>
+    <%= f.select :team_number, 1...3 %>
+    <%= f.label :チーム名 %>
+    <%= f.text_field :team_name,placeholder: "チーム名" %>
+    <%= link_to_remove_association "チーム削除", f %>
+  </div>
+</div>
