@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_03_10_091153) do
   create_table "counts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "team_id"
-    t.integer "count", default: 0
+    t.integer "count", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

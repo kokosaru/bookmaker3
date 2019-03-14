@@ -1,0 +1,16 @@
+	<%= @team_a.team_name %>
+	<%#= @team_a.count / (@team_a.count + @team_b.count).to_f*100.round(0) %>
+	<%#= @team_b.count / (@team_a.count + @team_b.count).to_f*100.round(0) %>
+	<%= @team_b.team_name %>
+	<%# @matches.each do |match| %>
+
+
+	<%= form_for (@count) do |f| %>
+	<% @match.teams.each do |team| %>
+	<%= f.radio_button :team_id, team.id, {:checked => true} %>
+	<%= team.team_name %>
+	<% end %>
+		Betレート
+		<%= f.number_field :count, step: 10, min: 0, max: 500 %>
+		<%= f.submit 'Betする', class: "btn btn-info glyphicon "%>
+		<% end %>

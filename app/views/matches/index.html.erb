@@ -1,9 +1,11 @@
-<% @matches.each do |match| %>
-	<%= match.genre %>
+	<% @matches.each do |match| %>
+		<%= link_to match_path(match.id),data: {"turbolinks" => false} do %>
+		<%= match.genre %>
 	<% match.teams.each do |team| %>
 		<%= team.team_name %>
 	<% end %>
-  	<%= match.match_name %>
-  	<%= match.match_day.strftime("%m月 %d日 %H:%M") %>
-  <br>
+		<%= match.match_name %>
+		<%= match.match_day.strftime("%m月 %d日 %H:%M") %>
+	<br>
+	<% end %>
 <% end %>

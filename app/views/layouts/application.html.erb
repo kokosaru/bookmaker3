@@ -13,16 +13,17 @@
     <div class="head">
     <% if user_signed_in? && current_user.admin == true %>
       <nav class="head_navi clearfix">
-            <li class="navi-list"><%= link_to 'TOP画面へ戻る', matches_path %></li>
-            <li class="navi-list"><%= link_to '登録者 一覧', admin_matches_path %></li>
-            <!--<li class="navi-list"><%#= link_to '登録商品 一覧', admin_matches_path %></li> -->
-            <li class="navi-list"><%= link_to "新規商品登録", new_admin_match_path, data: {"turbolinks" => false} %></li>
+            <li class="navi-list"><%= link_to 'TOP画面', matches_path %></li>
+            <li class="navi-list"><%= link_to '試合 一覧', admin_matches_path %></li>
+            <li class="navi-list"><%= link_to 'ユーザ 一覧', admin_users_path %></li>
+            <li class="navi-list"><%= link_to "試合登録", new_admin_match_path, data: {"turbolinks" => false} %></li>
             <li class="navi-list"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
      </nav>
 
      <% elsif user_signed_in? %>
       <nav class="head_navi clearfix">
             <li class="navi-list"><%= link_to 'TOP画面へ戻る', matches_path %></li>
+            <li class="navi-list"><%= link_to 'マイページ', matches_path %></li>
             <li class="navi-list"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
     <% end %>
     </div>

@@ -3,7 +3,7 @@ class CreateCounts < ActiveRecord::Migration[5.2]
     create_table :counts do |t|
     	t.integer :user_id
     	t.integer :team_id
-    	t.integer :count, default: 0
+    	t.integer :count, default: 1
       t.timestamps
     end
   end
