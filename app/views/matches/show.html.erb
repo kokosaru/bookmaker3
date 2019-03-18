@@ -1,6 +1,8 @@
 	<%= @team_a.team_name %>
-	<%#= @team_a.count / (@team_a.count + @team_b.count).to_f*100.round(0) %>
-	<%#= @team_b.count / (@team_a.count + @team_b.count).to_f*100.round(0) %>
+	<%# if @match.teams.count.present? %>
+	<%= (@sum_a / (@sum_a + @sum_b).to_f*100).round(0) %>%
+	<%= (@sum_b / (@sum_a + @sum_b).to_f*100).round(0) %>%
+	<%# end %>
 	<%= @team_b.team_name %>
 	<%# @matches.each do |match| %>
 
@@ -14,3 +16,6 @@
 		<%= f.number_field :count, step: 10, min: 0, max: 500 %>
 		<%= f.submit 'Betする', class: "btn btn-info glyphicon "%>
 		<% end %>
+
+		<%= @sum_a %>
+		<%= @sum_b %>

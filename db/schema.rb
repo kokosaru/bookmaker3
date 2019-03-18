@@ -15,14 +15,14 @@ ActiveRecord::Schema.define(version: 2019_03_10_091153) do
   create_table "counts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "team_id"
-    t.integer "count", default: 1
+    t.integer "count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "matches", force: :cascade do |t|
     t.integer "genre"
-    t.integer "match_status"
+    t.integer "match_status", default: 0
     t.string "match_name"
     t.datetime "match_day"
     t.datetime "created_at", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_03_10_091153) do
   create_table "teams", force: :cascade do |t|
     t.integer "match_id"
     t.integer "team_number"
+    t.integer "totalcount", default: 10
     t.string "team_name"
     t.string "team_image_id"
     t.datetime "created_at", null: false

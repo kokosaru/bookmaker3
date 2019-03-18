@@ -10,5 +10,4 @@ Rails.application.routes.draw do
   	resources :matches
   	resources :users, only: [:index, :show, :edit, :update, :destroy]
   end
-
 end

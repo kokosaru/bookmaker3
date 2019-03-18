@@ -1,1 +1,28 @@
-adminだよ
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="admin_user_headline">
+				<h2 class="text-left">登録者 一覧</h2>
+			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>登録者 ID</th>
+						<th>ユーザー名</th>
+						<th>試合状況</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody class="text-left">
+					<% @matches.order(created_at: "desc").each do |match| %>
+					<tr>
+						<td><%= match.id %></td>
+						<td><%= match.match_name %></td>
+						<td><%= match.match_status %></td>
+						<td><div><%= link_to '試合詳細', admin_match_path(match.id), class: "btn btn-default" %></div></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>

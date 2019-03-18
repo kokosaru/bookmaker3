@@ -3,8 +3,11 @@ class CountsController < ApplicationController
 
 	def create
 		@count = Count.new(count_params)
+		team = Team.find(params[:count][:team_id])
      	@count.user_id = current_user.id
+     	team.totalcount += @count.count
   	 	@count.save
+  	 	team.save
   	 	redirect_to matches_path
 	end
 
@@ -19,5 +22,4 @@ class CountsController < ApplicationController
     flash[:notice] = "ログインして下さい"
     end
   end
-
 end
