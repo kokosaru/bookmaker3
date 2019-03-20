@@ -1,11 +1,24 @@
-	<% @matches.each do |match| %>
-		<%= link_to match_path(match.id),data: {"turbolinks" => false} do %>
-		<%= match.genre %>
-	<% match.teams.each do |team| %>
-		<%= team.team_name %>
-	<% end %>
-		<%= match.match_name %>
-		<%= match.match_day.strftime("%m月 %d日 %H:%M") %>
-	<br>
-	<% end %>
-<% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8">
+			<h1 class="title">MATCHES</h1>
+			<div style="border-top: 1px solid gray;">
+				<div class="col-lg-9">
+					<% @matches.each do |match| %>
+					<div class="match">
+					<%= link_to match_path(match.id),data: {"turbolinks" => false} do %>
+					<div class="col-lg-3 item"><%= match.genre %></div>
+					<% match.teams.each do |team| %>
+					<div class="col-lg-3 item"><%= team.team_name %></div>
+					<% end %>
+					<%= match.match_name %>
+					<%= match.match_day.strftime("%m月 %d日 %H:%M") %>
+					<br>
+					<% end %>
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

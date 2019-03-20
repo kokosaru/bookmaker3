@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_10_091153) do
+ActiveRecord::Schema.define(version: 2019_03_18_103157) do
+
+  create_table "countresults", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "countresult", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "counts", force: :cascade do |t|
     t.integer "user_id"
@@ -35,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_03_10_091153) do
     t.integer "totalcount", default: 10
     t.string "team_name"
     t.string "team_image_id"
+    t.boolean "result", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

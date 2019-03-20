@@ -1,4 +1,4 @@
-<div class="container admin_orderbox">
+<div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
       <div class="admin_order_headline">
@@ -11,7 +11,14 @@
           <label>ステータス</label>
           <%= form_for([:admin, @match]) do |f| %>
             <%= f.select :match_status, Match.match_statuses.keys %>
+            <% @match.teams.each do |team| %>
+            <%= f.radio_button :team_id, team.id, {:checked => false} %>
+            <%= team.team_name %>
+            <% end %>
             <%= f.submit '変更' %>
+          <% end %>
+          <% @results.each do |result| %>
+            <%= result.countresult %>
           <% end %>
         </div>
       </div>

@@ -11,6 +11,7 @@
 						<th>ユーザー名</th>
 						<th>試合状況</th>
 						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody class="text-left">
@@ -20,6 +21,7 @@
 						<td><%= match.match_name %></td>
 						<td><%= match.match_status %></td>
 						<td><div><%= link_to '試合詳細', admin_match_path(match.id), class: "btn btn-default" %></div></td>
+						<td><%= link_to "削除", admin_match_path(match.id), method: :delete,"data-confirm" => "商品を削除しますか？", class: "btn btn-danger" %></td>
 					</tr>
 					<% end %>
 				</tbody>

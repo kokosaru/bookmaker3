@@ -6,6 +6,7 @@ class CreateTeams < ActiveRecord::Migration[5.2]
     	t.integer :totalcount, default: 10
     	t.string  :team_name
     	t.string  :team_image_id
+      t.boolean :result, default: false
       t.timestamps
     end
   end
