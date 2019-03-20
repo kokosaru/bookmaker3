@@ -1,22 +1,45 @@
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8">
-			<h1 class="title">MATCHES</h1>
-			<div style="border-top: 1px solid gray;">
-				<div class="col-lg-9">
-					<% @matches.each do |match| %>
-					<div class="match">
-					<%= link_to match_path(match.id),data: {"turbolinks" => false} do %>
-					<div class="col-lg-3 item"><%= match.genre %></div>
-					<% match.teams.each do |team| %>
-					<div class="col-lg-3 item"><%= team.team_name %></div>
-					<% end %>
-					<%= match.match_name %>
-					<%= match.match_day.strftime("%m月 %d日 %H:%M") %>
-					<br>
-					<% end %>
-					</div>
-					<% end %>
+<div class="body">
+	<div class="container">
+		<div class="row match">
+			<div class="col-lg-8">
+				<h1 class="title">MATCHES</h1>
+				<div style="border-top: 1px solid gray;">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>sports</th>
+								<th>teamA</th>
+								<th>teamB</th>
+								<th>大会</th>
+								<th>試合日時</th>
+								<th>試合状況</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @matches.order(created_at: "desc").each do |match| %>
+							<tr>
+									<td class="item">
+										<%= link_to match.genre, match_path(match.id),data: {"turbolinks" => false} %>
+									</td>
+
+									<% match.teams.each do |team| %>
+									<td class="item">
+										<%= link_to team.team_name, match_path(match.id),data: {"turbolinks" => false} %>
+									</td>
+									<% end %>
+									<td class="item">
+										<%= link_to match.match_name, match_path(match.id),data: {"turbolinks" => false} %>
+									</td>
+									<td class="item">
+										<%= link_to match.match_day.strftime("%m月 %d日 %H:%M") , match_path(match.id),data: {"turbolinks" => false} %>
+									</td>
+									<td class="item"><%= match.match_status %></td>
+							</tr>
+
+							<% end %>
+
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

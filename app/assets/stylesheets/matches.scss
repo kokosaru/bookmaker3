@@ -2,12 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-a{
-	color: red;
-  	text-decoration:none;
- 	font-size: 15px;
+.body{
+	background-color: #65656d;
+	height: 1000px;
 }
 
 .match{
-	display: flex;
+	background-color: #ece9e9;
+	margin-top: 20px;
+}
+
+.match a{
+	color: gray;
+  	text-decoration:none;
+}
+.item{
+	font-size: 12px;
 }
