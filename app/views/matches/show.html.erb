@@ -1,21 +1,43 @@
-	<%= @team_a.team_name %>
-	<%# if @match.teams.count.present? %>
-	<%= (@sum_a / (@sum_a + @sum_b).to_f*100).round(0) %>%
-	<%= (@sum_b / (@sum_a + @sum_b).to_f*100).round(0) %>%
-	<%# end %>
-	<%= @team_b.team_name %>
-	<%# @matches.each do |match| %>
-
-
-	<%= form_for (@count) do |f| %>
-	<% @match.teams.each do |team| %>
-	<%= f.radio_button :team_id, team.id, {:checked => true} %>
-	<%= team.team_name %>
-	<% end %>
-		Betレート
-		<%= f.number_field :count, step: 10, min: 0, max: 500 %>
-		<%= f.submit 'Betする', class: "btn btn-info glyphicon "%>
-		<% end %>
-
-		<%= @sum_a %>
-		<%= @sum_b %>
+<div class="body">
+	<div class="container">
+		<div class="row match">
+			<div class="col-lg-8">
+				<div class="match-time">
+					<%= @match.match_day.strftime("%m月 %d日 %H:%M") %>
+				</div>
+				<h1 class="match-title"><%= @match.match_name %></h1>
+				<div class="row match-text">
+					<span class="col-lg-5 text-right">
+						<%= @team_a.team_name %>
+						<span class="winrate-text"><%= (@sum_a / (@sum_a + @sum_b).to_f*100).round(0) %>%</span>
+					</span>
+					<span class="col-lg-1">vs</span>
+					<span class="col-lg-5 text-left">
+						<span class="winrate-text"><%= (@sum_b / (@sum_a + @sum_b).to_f*100).round(0) %>%</span>
+						<%= @team_b.team_name %>
+					</span>
+				</div>
+				<%= form_for (@count) do |f| %>
+				<div class="radio-btn">
+					<% @match.teams.each do |team| %>
+					<%= f.radio_button :team_id, team.id, {:checked => true} %>
+					<%= team.team_name %>
+					<% end %>
+					<spend class="rate-btn">
+						Betレート
+						<%= f.number_field :count, step: 10, min: 0, max: 500 %>
+					</spend>
+				</div>
+				<%= f.submit 'Bet', class: "button"%>
+				<% end %>
+			</div>
+			<div class="col-lg-4">
+				<lu class="side-menu">
+					<li class="menu-item btn-edge"><%= link_to 'TOP画面へ', matches_path %></li>
+					<li class="menu-item btn-edge"><%= link_to 'マイページ', user_path %></li>
+					<li class="menu-item btn-edge"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
+				</lu>
+			</div>
+		</div>
+	</div>
+</div>

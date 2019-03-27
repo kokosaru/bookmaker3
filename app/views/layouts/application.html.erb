@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bookmaker3</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Bookmaker3</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <header>
-    <div class="head">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<header>
+  <div class="head">
+    <div class="head-title">Bookmaker</div>
     <% if user_signed_in? && current_user.admin == true %>
-      <nav class="head_navi clearfix">
-            <li class="navi-list"><%= link_to 'TOP画面', matches_path %></li>
-            <li class="navi-list"><%= link_to '試合 一覧', admin_matches_path %></li>
-            <li class="navi-list"><%= link_to 'ユーザ 一覧', admin_users_path %></li>
-            <li class="navi-list"><%= link_to "試合登録", new_admin_match_path, data: {"turbolinks" => false} %></li>
-            <li class="navi-list"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
-     </nav>
+    <nav class="head_navi">
+      <li class="navi-list"><%= link_to 'TOP画面', matches_path %></li>
+      <li class="navi-list"><%= link_to '試合 一覧', admin_matches_path %></li>
+      <li class="navi-list"><%= link_to 'ユーザ 一覧', admin_users_path %></li>
+      <li class="navi-list"><%= link_to "試合登録", new_admin_match_path, data: {"turbolinks" => false} %></li>
+      <li class="navi-list"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
+    </nav>
 
-     <% elsif user_signed_in? %>
-      <nav class="head_navi clearfix">
-            <li class="navi-list"><%= link_to 'TOP画面へ戻る', matches_path %></li>
-            <li class="navi-list"><%= link_to 'マイページ', matches_path %></li>
-            <li class="navi-list"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
+    <% elsif user_signed_in? %>
+    <nav class="head_navi">
+      <li class="navi-list"><%= link_to 'TOP画面へ戻る', matches_path %></li>
+      <li class="navi-list"><%= link_to 'マイページ', matches_path %></li>
+      <li class="navi-list"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
+    </nav>
+    <% else %>
+
     <% end %>
-    </div>
-  </header>
-  <body>
-    <%= yield %>
-  </body>
+  </div>
+</header>
+<body>
+  <%= yield %>
+</body>
+<footer>
+ <p class="footer-text">© Bookmaker3.</p>
+</footer>
 </html>

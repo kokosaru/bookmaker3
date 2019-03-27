@@ -1,0 +1,16 @@
+<div class="body">
+	<div class="container">
+		<div class="row user-show">
+			<div class="col-lg-8">
+				<%= @user.user_name %>
+			</div>
+			<div class="col-lg-4">
+				<lu class="side-menu">
+					<li class="menu-item btn-edge"><%= link_to 'TOP画面へ', matches_path %></li>
+					<li class="menu-item btn-edge"><%= link_to 'マイページ', user_path %></li>
+					<li class="menu-item btn-edge"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
+				</lu>
+			</div>
+		</div>
+	</div>
+</div>

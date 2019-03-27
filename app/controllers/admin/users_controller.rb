@@ -8,7 +8,6 @@ class Admin::UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@sum = @user.countresults.sum
 	end
 
 	def only_admin_user

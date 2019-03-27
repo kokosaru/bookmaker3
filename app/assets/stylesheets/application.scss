@@ -27,37 +27,53 @@ header {
   width: 100%;
   padding: 20px 0;
   /*background-color: #ffffffe8;*/
-  background-color: skyblue;
+  /*background-color: skyblue;*/
+  background: image-url("black.png");
   border-bottom: solid 1px #777;
 }
 
 .head {
   margin: 0 auto;
   position: relative;
-  padding: 10px;
+
+}
+
+.head-title{
+  text-align: center;
+  font-size: 25px;
+  font-family: arial black;
+  color: #776c6c;
 }
 
 .head_navi {
-  float: left;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  display: table;
-  padding-right: 30px;
+ display: flex;
+ justify-content: center;
 }
 
 .navi-list {
   width: 120px;
   list-style: none;
-  display: table-cell;
-  vertical-align: middle;
   text-align: center;
 }
 
 .navi-list a {
-  color: #000000;
+  color: #776c6c;
   text-decoration:none;
   font-size: 15px;
   font-family: sans-serif;
 }
+
+footer {
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  padding: 40px 0;
+  background-color: #848282;
+}
+.footer-text {
+  color: #fff;
+}
+
+
+
 

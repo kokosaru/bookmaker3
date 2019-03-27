@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row match">
 			<div class="col-lg-8">
-				<h1 class="title">MATCHES</h1>
+				<h1 class="title">MATCHES </h1>
 				<div style="border-top: 1px solid gray;">
 					<table class="table">
 						<thead>
@@ -18,29 +18,122 @@
 						<tbody>
 							<% @matches.order(created_at: "desc").each do |match| %>
 							<tr>
-									<td class="item">
-										<%= link_to match.genre, match_path(match.id),data: {"turbolinks" => false} %>
-									</td>
+								<% if match.match_status == "試合中" %>
+								<td class="item">
+									<%= link_to match.genre, match_path(match.id),data: {"turbolinks" => false} %>
+								</td>
 
-									<% match.teams.each do |team| %>
-									<td class="item">
-										<%= link_to team.team_name, match_path(match.id),data: {"turbolinks" => false} %>
-									</td>
-									<% end %>
-									<td class="item">
-										<%= link_to match.match_name, match_path(match.id),data: {"turbolinks" => false} %>
-									</td>
-									<td class="item">
-										<%= link_to match.match_day.strftime("%m月 %d日 %H:%M") , match_path(match.id),data: {"turbolinks" => false} %>
-									</td>
-									<td class="item"><%= match.match_status %></td>
+								<% match.teams.each do |team| %>
+								<td class="item">
+									<%= link_to team.team_name, match_path(match.id),data: {"turbolinks" => false} %>
+								</td>
+								<% end %>
+								<td class="item">
+									<%= link_to match.match_name, match_path(match.id),data: {"turbolinks" => false} %>
+								</td>
+								<td class="item">
+									<%= link_to match.match_day.strftime("%m月 %d日 %H:%M") , match_path(match.id),data: {"turbolinks" => false} %>
+								</td>
+								<td class="item"><%= match.match_status %></td>
 							</tr>
 
 							<% end %>
-
+							<% end %>
 						</tbody>
 					</table>
 				</div>
+
+
+				<h1 class="title">MATCHES UPCOMING</h1>
+				<div style="border-top: 1px solid gray;">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>sports</th>
+								<th>teamA</th>
+								<th>teamB</th>
+								<th>大会</th>
+								<th>試合日時</th>
+								<th>試合状況</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @matches.order(created_at: "desc").each do |match| %>
+							<tr>
+								<% if match.match_status == "試合前" %>
+								<td class="item">
+									<%= link_to match.genre, match_path(match.id),data: {"turbolinks" => false} %>
+								</td>
+
+								<% match.teams.each do |team| %>
+								<td class="item">
+									<%= link_to team.team_name, match_path(match.id),data: {"turbolinks" => false} %>
+								</td>
+								<% end %>
+								<td class="item">
+									<%= link_to match.match_name, match_path(match.id),data: {"turbolinks" => false} %>
+								</td>
+								<td class="item">
+									<%= link_to match.match_day.strftime("%m月 %d日 %H:%M") , match_path(match.id),data: {"turbolinks" => false} %>
+								</td>
+								<td class="item"><%= match.match_status %></td>
+							</tr>
+
+							<% end %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+
+
+				<h1 class="title">MATCHES HISTORY</h1>
+				<div style="border-top: 1px solid gray;">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>sports</th>
+								<th>teamA</th>
+								<th>teamB</th>
+								<th>大会</th>
+								<th>試合日時</th>
+								<th>試合状況</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @matches.order(created_at: "desc").each do |match| %>
+							<tr>
+								<% if match.match_status == "試合終了" %>
+								<td class="item">
+									<%= link_to match.genre, match_path(match.id),data: {"turbolinks" => false} %>
+								</td>
+
+								<% match.teams.each do |team| %>
+								<td class="item">
+									<%= team.result %>
+									<%= link_to team.team_name, match_path(match.id),data: {"turbolinks" => false} %>
+								</td>
+								<% end %>
+								<td class="item">
+									<%= link_to match.match_name, match_path(match.id),data: {"turbolinks" => false} %>
+								</td>
+								<td class="item">
+									<%= link_to match.match_day.strftime("%m月 %d日 %H:%M") , match_path(match.id),data: {"turbolinks" => false} %>
+								</td>
+								<td class="item"><%= match.match_status %></td>
+							</tr>
+
+							<% end %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<lu class="side-menu">
+					<li class="menu-item btn-edge"><%= link_to 'TOP画面へ', matches_path %></li>
+					<li class="menu-item btn-edge"><%= link_to 'マイページ', user_path %></li>
+					<li class="menu-item btn-edge"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
+				</lu>
 			</div>
 		</div>
 	</div>
