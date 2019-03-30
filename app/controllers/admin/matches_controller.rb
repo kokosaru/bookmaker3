@@ -29,11 +29,15 @@ class Admin::MatchesController < ApplicationController
     		team.result = true
     		team.save
     		lose_team = Team.find_by(match_id: match, result: "lose")
-    		odds = (lose_team.totalcount / team.totalcount.to_f).round(0)
+    		odds = (lose_team.totalcount / team.totalcount.to_f).round(3)
     		team.counts.each do |count|
     			@result = Countresult.new(user_id: count.user_id, countresult:count.count)
     			@result.countresult = @result.countresult*odds
     			@result.save
+    			user = User.find(count.user_id)
+    			user.rate += @result.countresult
+    			user.rate += count.count
+    			user.save
     		end
     		redirect_to admin_match_path(match.id)
     	else

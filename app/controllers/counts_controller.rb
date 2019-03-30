@@ -6,7 +6,9 @@ class CountsController < ApplicationController
 		team = Team.find(params[:count][:team_id])
      	@count.user_id = current_user.id
      	team.totalcount += @count.count
+      current_user.rate -= @count.count
   	 	@count.save
+      current_user.save
   	 	team.save
   	 	redirect_to matches_path
 	end

@@ -31,6 +31,7 @@
 				<%= f.submit 'Bet', class: "button"%>
 				<% end %>
 			</div>
+			<% if user_signed_in? %>
 			<div class="col-lg-4">
 				<lu class="side-menu">
 					<li class="menu-item btn-edge"><%= link_to 'TOP画面へ', matches_path %></li>
@@ -38,6 +39,14 @@
 					<li class="menu-item btn-edge"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
 				</lu>
 			</div>
+			<% else %>
+			<div class="col-lg-4 logout-menu">
+				<lu class="side-menu">
+					<li class="menu-item btn-edge"><%= link_to '新規登録', new_user_registration_path,data: {"turbolinks" => false} %></li>
+					<li class="menu-item btn-edge"><%= link_to 'ログイン', new_user_session_path,data: {"turbolinks" => false} %></li>
+				</lu>
+			</div>
+			<% end %>
 		</div>
 	</div>
 </div>

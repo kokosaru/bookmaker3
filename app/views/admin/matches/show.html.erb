@@ -1,28 +1,50 @@
 <div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-      <div class="admin_order_headline">
-			  <h2>注文詳細 一覧</h2>
-      </div>
-			<div class="row">
-        <div class="col-md-5 col-md-offset-1">
-          <label>試合ID</label>
-          <p><%= @match.id %></p>
-          <label>ステータス</label>
+  <div class="back-color">
+   <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+     <h1 class="h1-text">試合詳細</h1>
+     <div class="row">
+      <div class="col-md-5 col-md-offset-1">
+        <h2 class="h2-text">試合ID</h2>
+        <p><%= @match.id %></p>
+        <h2 class="h2-text">ジャンル</h2>
+        <p><%= @match.genre %></p>
+        <h2 class="h2-text">大会名 日時</h2>
+        <p><%= @match.match_name %><br>
+          <%= @match.match_day %></p>
+          <h2 class="h2-text">ステータス</h2>
           <%= form_for([:admin, @match]) do |f| %>
-            <%= f.select :match_status, Match.match_statuses.keys %>
-            <% @match.teams.each do |team| %>
-            <%= f.radio_button :team_id, team.id, {:checked => false} %>
-            <%= team.team_name %>
+          <%= f.select :match_status, Match.match_statuses.keys %>
+          <% @match.teams.each do |team| %>
+          <%= f.radio_button :team_id, team.id, {:checked => false} %>
+          <%= team.team_name %>
+          <% end %>
+          <%= f.submit '変更' %>
+          <% end %>
+        </div>
+        <div class="col-md-5">
+          <h2 class="h2-text">BET</h2>
+          <table class="table">
+          <thead>
+            <tr>
+              <th>ユーザ名</th>
+              <th>BETrate</th>
+            </tr>
+          </thead>
+          <tbody class="text-left">
+            <% @results.each do |result| %>
+            <% user_id = result.user_id %>
+            <% user = User.find(user_id) %>
+            <tr>
+              <td><%= user.user_name %></td>
+              <td><%= result.countresult %></td>
+            </tr>
             <% end %>
-            <%= f.submit '変更' %>
-          <% end %>
-          <% @results.each do |result| %>
-            <%= result.countresult %>
-          <% end %>
+          </tbody>
+        </table>
         </div>
       </div>
     </div>
   </div>
 </div>
-
+</div>

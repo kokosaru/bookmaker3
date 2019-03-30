@@ -20,22 +20,16 @@
       <li class="navi-list"><%= link_to "試合登録", new_admin_match_path, data: {"turbolinks" => false} %></li>
       <li class="navi-list"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
     </nav>
-
-    <% elsif user_signed_in? %>
-    <nav class="head_navi">
-      <li class="navi-list"><%= link_to 'TOP画面へ戻る', matches_path %></li>
-      <li class="navi-list"><%= link_to 'マイページ', matches_path %></li>
-      <li class="navi-list"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
-    </nav>
-    <% else %>
-
     <% end %>
   </div>
 </header>
 <body>
-  <%= yield %>
+  <div id="wrapper">
+    <%= yield %>
+<!-- </body> -->
+  <footer>
+   <p class="footer-text">© Bookmaker3.</p>
+ </footer>
+</div>
 </body>
-<footer>
- <p class="footer-text">© Bookmaker3.</p>
-</footer>
 </html>
