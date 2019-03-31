@@ -5,10 +5,7 @@
 				<h2>ユーザー名</h2>
 				<p><%= @user.user_name %></p>
 				<h2>レート</h2>
-				<p><%= @user.rate %></p>
-				<% @user.countresults.each do |result| %>
-				<p><%= result.countresult %></p>
-				<% end %>
+				<p class="rate-text"><%= @user.rate %></p>
 			</div>
 			<div class="col-lg-4">
 				<lu class="side-menu">
